@@ -561,38 +561,7 @@
     </div>
 
     <script>
-        const PHOTOS = [
-            { url: "images/01.jpg", caption: "" },
-            { url: "images/02.jpg", caption: "" },
-            { url: "images/03.jpg", caption: "" },
-            { url: "images/04.jpg", caption: "" },
-            { url: "images/05.jpg", caption: "" },
-            { url: "images/06.jpg", caption: "" },
-            { url: "images/07.jpg", caption: "" },
-            { url: "images/08.jpg", caption: "" },
-            { url: "images/09.jpg", caption: "" },
-            { url: "images/010.jpg", caption: "" },
-            { url: "images/011.jpg", caption: "" },
-            { url: "images/012.jpg", caption: "" },
-            { url: "images/013.jpg", caption: "" },
-            { url: "images/014.jpg", caption: "" },
-            { url: "images/015.jpg", caption: "" },
-            { url: "images/016.jpg", caption: "" },
-            { url: "images/017.jpg", caption: "" },
-            { url: "images/018.jpg", caption: "" },
-            { url: "images/019.jpg", caption: "" },
-            { url: "images/020.jpg", caption: "" },
-            { url: "images/021.jpg", caption: "" },
-            { url: "images/022.jpg", caption: "" },
-            { url: "images/023.jpg", caption: "" },
-            { url: "images/024.jpg", caption: "" },
-            { url: "images/025.jpg", caption: "" },
-            { url: "images/026.jpg", caption: "" },
-            { url: "images/027.jpg", caption: "" },
-            { url: "images/028.jpg", caption: "" },
-            { url: "images/029.jpg", caption: "" },
-            { url: "images/030.jpg", caption: "" }
-        ];
+        const PHOTOS = generatePhotoArray(84);;
 
         const galleryGrid = document.getElementById("galleryGrid");
         const photoCount = document.getElementById("photoCount");
@@ -606,6 +575,25 @@
         const openInNewTabBtn = document.getElementById("openInNewTabBtn");
 
         let currentPhoto = null;
+
+
+        function generatePhotoArray(totalCount, basePath = "images/", extension = "jpg") {
+            const photos = [];
+
+            for (let i = 1; i <= totalCount; i++) {
+                // Format with leading zeros (3 digits)
+                const num = String(i).padStart(3, "0");
+
+                photos.push({
+                    url: `${basePath}${num}.${extension}`,
+                    caption: ""
+                });
+            }
+
+            return photos;
+        }
+
+
 
         function setPhotoCount(count) {
             if (count === 0) {
